@@ -1,13 +1,11 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-const Home = ({navigation}) => {
+const Dashboard = ({navigation}) => {
   const [action, setAction] = useState(false);
   useEffect(() => {
     console.log(' -----> render - 1', action);
-    return () => {
-      console.log(' component will unmount >>>');
-    };
+    return () => console.log(' component will unmount >>>');
   }, [action]);
 
   //   console.log(' render -----> 2');
@@ -17,8 +15,8 @@ const Home = ({navigation}) => {
       <Text>Home</Text>
       <TouchableOpacity
         onPress={() => {
-        //   navigation.navigate('Login');
-          setAction(!action);
+          navigation.navigate('Login');
+          // setAction(!action);
         }}>
         <Text>Go to login page</Text>
       </TouchableOpacity>

@@ -1,13 +1,14 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
+// Components
+import styles from './Style';
+import LoginHeader from '@components/login/loginHeader';
+
 const Login = ({navigation}) => {
   return (
-    <View>
-      <Text>Login</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Text>Go back Home</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <LoginHeader />
     </View>
   );
 };
