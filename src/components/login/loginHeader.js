@@ -28,7 +28,7 @@ const loginHeader = props => {
       {/* Button section */}
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btnContent}>
+        <TouchableOpacity style={styles.btnContent} onPress={props.goLogin}>
           <Text style={styles.loginTitle}>Login</Text>
         </TouchableOpacity>
 

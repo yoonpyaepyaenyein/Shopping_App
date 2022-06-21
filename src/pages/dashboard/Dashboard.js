@@ -1,27 +1,30 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {View, Text} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Dashboard = ({navigation}) => {
-  const [action, setAction] = useState(false);
+const Dashboard = () => {
+  const [name, setName] = useState('');
+
   useEffect(() => {
-    console.log(' -----> render - 1', action);
-    return () => console.log(' component will unmount >>>');
-  }, [action]);
+    getUserData();
+  }, []);
 
-  //   console.log(' render -----> 2');
+  const getUserData = async () => {
+    try {
+      const data = await AsyncStorage.getItem('@user.data');
+      const parseData = JSON.parse(data);
+      setName(parseData.email);
+      console.log('user data >>>', JSON.parse(data));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home</Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Login');
-          // setAction(!action);
-        }}>
-        <Text>Go to login page</Text>
-      </TouchableOpacity>
+    <View>
+      <Text>Hello, {name}</Text>
     </View>
   );
 };
 
-export default Home;
+export default Dashboard;
