@@ -3,12 +3,19 @@ import React from 'react';
 
 import styles from './style';
 
-const loginHeader = props => {
+const Register = props => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Register</Text>
       <View style={styles.inputContainer}>
         {/* input section */}
+
+        <TextInput
+          value={props.userValue}
+          placeholder="User Name ...."
+          style={styles.emailinput}
+          onChangeText={props.onChageUserName}
+        />
 
         <TextInput
           value={props.emailValue}
@@ -29,7 +36,7 @@ const loginHeader = props => {
 
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.btnContent} onPress={props.goLogin}>
-          <Text style={styles.loginTitle}>Login</Text>
+          <Text style={styles.loginTitle}>Register</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -67,4 +74,4 @@ const loginHeader = props => {
   );
 };
 
-export default loginHeader;
+export default Register;

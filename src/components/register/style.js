@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row',
     width: wp(100),
-    justifyContent:'space-around'
+    justifyContent: 'space-around',
   },
 });
 

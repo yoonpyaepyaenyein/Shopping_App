@@ -1,28 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import React, {useState, useEffect, useContext} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// Components
+import {AuthContext} from '../../context/context';
 
 const Dashboard = () => {
   const [name, setName] = useState('');
-
-  useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = async () => {
-    try {
-      const data = await AsyncStorage.getItem('@user.data');
-      const parseData = JSON.parse(data);
-      setName(parseData.email);
-      console.log('user data >>>', JSON.parse(data));
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
+  const {auth, getAuth, userInfo} = useContext(AuthContext);
 
   return (
-    <View>
-      <Text>Hello, {name}</Text>
+    <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+      <Text style={{fontSize: 20}}>Hello, {userInfo.email}</Text>
+      <TouchableOpacity onPress={() => getAuth(!auth)}>
+        <Text style={{fontSize: 20}}>Chage Auth Value </Text>
+      </TouchableOpacity>
     </View>
   );
 };
