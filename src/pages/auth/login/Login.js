@@ -11,9 +11,9 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {auth, getAuth} = useContext(AuthContext);
+  const {auth, getAuth, getUserInfo} = useContext(AuthContext);
 
-  console.log('auth >>>', auth);
+  // console.log('auth >>>', auth);
 
   const loginHandler = async () => {
     const userData = {
@@ -24,6 +24,7 @@ const Login = ({navigation}) => {
     try {
       await AsyncStorage.setItem('@user.data', JSON.stringify(userData));
       getAuth(true);
+      getUserInfo(userData);
     } catch (error) {
       console.log('error', error);
     }

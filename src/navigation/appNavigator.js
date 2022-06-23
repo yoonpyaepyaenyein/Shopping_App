@@ -22,11 +22,15 @@ const appNavigator = () => {
     getAuth: value => {
       setAuth(value);
     },
+    getUserInfo: value => {
+      setUserInfo(value);
+    },
   };
 
   const getData = async () => {
     try {
       const data = await AsyncStorage.getItem('@user.data');
+      // console.log('user data appNav ::', data);
       if (data) {
         setAuth(true);
         setUserInfo(JSON.parse(data));
