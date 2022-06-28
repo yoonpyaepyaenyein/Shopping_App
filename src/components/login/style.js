@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: hp(4),
     fontWeight: 'bold',
-    marginTop: hp(20),
+    marginTop: hp(10),
     color: '#6B778A',
   },
   inputContainer: {

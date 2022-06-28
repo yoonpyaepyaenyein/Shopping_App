@@ -2,30 +2,32 @@ import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import React from 'react';
 
 import styles from './style';
+import {useLocal} from '../../hook';
 
 const Register = props => {
+  const local = useLocal();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>{local.register}</Text>
       <View style={styles.inputContainer}>
         {/* input section */}
 
         <TextInput
           value={props.userValue}
-          placeholder="User Name ...."
+          placeholder={local.userNamePlaceHolder}
           style={styles.emailinput}
           onChangeText={props.onChageUserName}
         />
 
         <TextInput
           value={props.emailValue}
-          placeholder="Email...."
+          placeholder={local.emailPlaceholder}
           style={styles.emailinput}
           onChangeText={props.onChageEmail}
         />
         <TextInput
           value={props.passValue}
-          placeholder="Password...."
+          placeholder={local.passwordPlaceholder}
           style={styles.emailinput}
           secureTextEntry={true}
           onChangeText={props.onChangePass}
@@ -36,7 +38,7 @@ const Register = props => {
 
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.btnContent} onPress={props.goRegister}>
-          <Text style={styles.loginTitle}>Register</Text>
+          <Text style={styles.loginTitle}>{local.register}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -49,7 +51,9 @@ const Register = props => {
               marginTop: 40,
             },
           ]}>
-          <Text style={[styles.loginTitle, {color: '#7A87C4'}]}>Facebook</Text>
+          <Text style={[styles.loginTitle, {color: '#7A87C4'}]}>
+            {local.facebook}
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -61,13 +65,15 @@ const Register = props => {
               borderWidth: 1.5,
             },
           ]}>
-          <Text style={[styles.loginTitle, {color: '#CFA19F'}]}>Google</Text>
+          <Text style={[styles.loginTitle, {color: '#CFA19F'}]}>
+            {local.google}
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
-        <Text>Forget Password?</Text>
+        <Text>{local.forgetPwd}</Text>
         <TouchableOpacity onPress={props.goLogin}>
-          <Text>Login</Text>
+          <Text>{local.login}</Text>
         </TouchableOpacity>
       </View>
     </View>

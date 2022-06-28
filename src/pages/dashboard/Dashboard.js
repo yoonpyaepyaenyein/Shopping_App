@@ -5,10 +5,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Components
 import {AuthContext} from '../../context/context';
+import {appStorage} from '../../utils';
 
 // Styles & Icons
 import styles from './Style';
@@ -19,9 +19,9 @@ const Dashboard = () => {
   const [name, setName] = useState('');
   const {auth, getAuth, userInfo} = useContext(AuthContext);
 
-  const removeData = async () => {
+  const removeData = () => {
     try {
-      await AsyncStorage.removeItem('@user.token');
+      appStorage.removeItem('@user.token');
       getAuth(false);
     } catch (e) {
       console.log('error', e);

@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // backgroundColor: 'red',
   },
+  headerStyle: {
+    width: wp(100),
+    alignItems: 'flex-end',
+    padding: 10,
+  },
 });
 
 export default styles;

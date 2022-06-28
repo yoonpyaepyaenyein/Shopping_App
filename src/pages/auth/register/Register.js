@@ -1,11 +1,11 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {View, Text, ToastAndroid} from 'react-native';
 
 // Components
 import styles from './Style';
 import RegisterComponent from '@components/register/register';
 import {AuthContext} from '@context/context';
+import {appStorage} from '../../../utils';
 
 const Register = ({navigation}) => {
   const [name, setName] = useState('');
@@ -14,7 +14,7 @@ const Register = ({navigation}) => {
 
   const {getAuth, getUserInfo} = useContext(AuthContext);
 
-  const registerHandler = async () => {
+  const registerHandler = () => {
     let token = '1234567890';
 
     const userData = {
@@ -24,10 +24,11 @@ const Register = ({navigation}) => {
     };
 
     try {
-      await AsyncStorage.setItem('@user.data', JSON.stringify(userData));
-      await AsyncStorage.setItem('@user.token', token);
+      appStorage.setItem('@user.data', JSON.stringify(userData));
+      appStorage.setItem('@user.token', token);
       getAuth(true);
       getUserInfo(userData);
+      ToastAndroid.show('Register success!', ToastAndroid.SHORT);
     } catch (error) {
       console.log('error', error);
     }

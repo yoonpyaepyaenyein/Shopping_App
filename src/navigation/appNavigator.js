@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Comonents
 import AuthStack from './stack/AuthStack';
 import DashboardStack from './stack/DashboardStack';
 import {AuthContext} from '../context/context';
+import {appStorage} from '../utils';
 
 const appNavigator = () => {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [splash, setSplash] = useState(true);
+  const [lang, setLang] = useState('en');
 
   useEffect(() => {
     getData();
@@ -19,6 +20,7 @@ const appNavigator = () => {
 
   const context = {
     auth,
+    lang,
     userInfo,
     getAuth: value => {
       setAuth(value);
@@ -26,12 +28,15 @@ const appNavigator = () => {
     getUserInfo: value => {
       setUserInfo(value);
     },
+    changeLanguage: value => {
+      setLang(value);
+    },
   };
 
-  const getData = async () => {
+  const getData = () => {
     try {
-      const data = await AsyncStorage.getItem('@user.token');
-      const userData = await AsyncStorage.getItem('@user.data');
+      const data = appStorage.getItem('@user.token');
+      const userData = appStorage.getItem('@user.data');
       if (data) {
         setAuth(true);
         setUserInfo(JSON.parse(userData));
