@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const removeData = async () => {
     try {
-      await AsyncStorage.removeItem('@user.data');
+      await AsyncStorage.removeItem('@user.token');
       getAuth(false);
     } catch (e) {
       console.log('error', e);
@@ -44,8 +44,10 @@ const Dashboard = () => {
       </View>
 
       <View style={styles.titleContainer}>
-        <Text style={styles.profileName}>Htoo Myat</Text>
-        <Text style={styles.profileEmail}>@htoo</Text>
+        <Text style={styles.profileName}>{userInfo ? userInfo.name : ''}</Text>
+        <Text style={styles.profileEmail}>
+          {userInfo ? userInfo.email : ''}
+        </Text>
       </View>
 
       {/* <View style={styles.logoutContainer}> */}

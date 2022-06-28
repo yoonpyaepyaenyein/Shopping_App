@@ -11,6 +11,7 @@ import {AuthContext} from '../context/context';
 const appNavigator = () => {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [splash, setSplash] = useState(true);
 
   useEffect(() => {
     getData();
@@ -29,13 +30,19 @@ const appNavigator = () => {
 
   const getData = async () => {
     try {
-      const data = await AsyncStorage.getItem('@user.data');
-      // console.log('user data appNav ::', data);
+      const data = await AsyncStorage.getItem('@user.token');
+      const userData = await AsyncStorage.getItem('@user.data');
       if (data) {
         setAuth(true);
-        setUserInfo(JSON.parse(data));
+        setUserInfo(JSON.parse(userData));
+        setTimeout(() => {
+          setSplash(false);
+        }, 2000);
       } else {
         setAuth(false);
+        setTimeout(() => {
+          setSplash(false);
+        }, 2000);
       }
     } catch (error) {
       console.log('error', error);
@@ -43,7 +50,13 @@ const appNavigator = () => {
     }
   };
 
-  if (auth) {
+  if (splash) {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontSize: 20}}>Welcome to our app</Text>
+      </View>
+    );
+  } else if (auth) {
     return (
       <AuthContext.Provider value={context}>
         <NavigationContainer>

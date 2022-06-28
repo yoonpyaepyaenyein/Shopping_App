@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ToastAndroid} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Components
@@ -13,18 +13,23 @@ const Login = ({navigation}) => {
 
   const {auth, getAuth, getUserInfo} = useContext(AuthContext);
 
-  // console.log('auth >>>', auth);
-
   const loginHandler = async () => {
-    const userData = {
-      email: email,
-      password: password,
-    };
-
+    let token = '1234567890';
     try {
-      await AsyncStorage.setItem('@user.data', JSON.stringify(userData));
-      getAuth(true);
-      getUserInfo(userData);
+      const data = await AsyncStorage.getItem('@user.data');
+      console.log('user login ::', data);
+      const formatData = JSON.parse(data);
+      if (formatData) {
+        if (formatData.email === email && formatData.password === password) {
+          getAuth(true);
+          getUserInfo(formatData);
+          await AsyncStorage.setItem('@user.token', token);
+        } else {
+          ToastAndroid.show('Something wrong!', ToastAndroid.SHORT);
+        }
+      } else {
+        ToastAndroid.show('Something wrong!', ToastAndroid.SHORT);
+      }
     } catch (error) {
       console.log('error', error);
     }

@@ -35,7 +35,7 @@ const Register = props => {
       {/* Button section */}
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btnContent} onPress={props.goLogin}>
+        <TouchableOpacity style={styles.btnContent} onPress={props.goRegister}>
           <Text style={styles.loginTitle}>Register</Text>
         </TouchableOpacity>
 
@@ -66,8 +66,8 @@ const Register = props => {
       </View>
       <View style={styles.footer}>
         <Text>Forget Password?</Text>
-        <TouchableOpacity onPress={props.goRegister}>
-          <Text>Register</Text>
+        <TouchableOpacity onPress={props.goLogin}>
+          <Text>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
