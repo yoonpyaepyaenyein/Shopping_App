@@ -7,10 +7,12 @@ import LoginHeader from '@components/login/loginHeader';
 import {AuthContext} from '../../../context/context';
 import {appStorage} from '../../../utils';
 import {useLocal} from '../../../hook';
+import AlertModal from '@components/alert/alertModal';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [shwoModal, setShowModal] = useState(false);
   const local = useLocal();
 
   const {auth, lang, getAuth, getUserInfo, changeLanguage} =
@@ -20,7 +22,6 @@ const Login = ({navigation}) => {
     let token = '1234567890';
     try {
       const data = appStorage.getItem('@user.data');
-      console.log('user login ::', data);
       if (data) {
         const formatData = JSON.parse(data);
         if (formatData.email === email && formatData.password === password) {
@@ -38,21 +39,21 @@ const Login = ({navigation}) => {
     }
   };
 
-  console.log('language ::', lang);
+  const chageLanguageHandler = value => {
+    appStorage.setItem('@language', value);
+    changeLanguage(value);
+    setShowModal(false);
+  };
+
+  const languageHandler = () => {
+    setShowModal(true);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerStyle}>
-        <TouchableOpacity
-          style={{padding: 5}}
-          onPress={() => changeLanguage('en')}>
-          <Text>English</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={{padding: 5}}
-          onPress={() => changeLanguage('mm')}>
-          <Text>Myanmar</Text>
+        <TouchableOpacity style={{padding: 5}} onPress={languageHandler}>
+          {lang === 'en' ? <Text>English</Text> : <Text>Myanmar</Text>}
         </TouchableOpacity>
       </View>
       <LoginHeader
@@ -63,6 +64,14 @@ const Login = ({navigation}) => {
         goLogin={loginHandler}
         goRegister={() => navigation.navigate('Register')}
       />
+      {/* Modal */}
+
+      {shwoModal && (
+        <AlertModal
+          languageAction={value => chageLanguageHandler(value)}
+          selectedLang={lang}
+        />
+      )}
     </View>
   );
 };

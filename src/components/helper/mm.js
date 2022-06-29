@@ -7,4 +7,5 @@ export default {
   facebook: 'ဖေ့စ်ဘုတ်',
   google: 'ဂူဂဲလ်',
   forgetPwd: 'မေ့နေသလား?',
+  language: 'ဘာသာစကား',
 };

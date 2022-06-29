@@ -7,4 +7,5 @@ export default {
   facebook: 'Facebook',
   google: 'Google',
   forgetPwd: 'forget Password?',
+  language: 'Language',
 };

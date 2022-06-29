@@ -37,6 +37,8 @@ const appNavigator = () => {
     try {
       const data = appStorage.getItem('@user.token');
       const userData = appStorage.getItem('@user.data');
+      const storeLang = appStorage.getItem('@language');
+      setLang(storeLang);
       if (data) {
         setAuth(true);
         setUserInfo(JSON.parse(userData));
