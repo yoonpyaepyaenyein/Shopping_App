@@ -7,6 +7,12 @@ import {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    width: wp(100),
+    height: hp(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: hp(2),
+    marginTop: hp(1),
   },
   profileImage: {
     backgroundColor: '#365870',
@@ -64,6 +70,40 @@ const styles = StyleSheet.create({
   },
   logout: {
     color: '#ff8800',
+  },
+  infoContainer: {
+    height: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imageContainer: {
+    width: wp(20),
+    height: hp(10),
+    borderRadius: hp(10),
+    overflow: 'hidden',
+  },
+  userImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: hp(10),
+    resizeMode: 'contain',
+  },
+  userInfo: {
+    marginLeft: hp(1),
+    height: '100%',
+    justifyContent: 'space-evenly',
+  },
+  button: {
+    backgroundColor: '#fff',
+    paddingHorizontal: hp(1.5),
+    paddingVertical: hp(1),
+  },
+  logoutTitle: {
+    color: '#FA4F00',
+  },
+  name: {
+    fontSize: hp(2.5),
+    fontWeight:'bold'
   },
 });
 export default styles;

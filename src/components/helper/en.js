@@ -8,4 +8,13 @@ export default {
   google: 'Google',
   forgetPwd: 'forget Password?',
   language: 'Language',
+  price: 'Price',
+  buy: 'Buy Now',
+  logout: 'Logout',
+  logoutAlert: 'Logout successful',
+  addCart: 'Add to Cart',
+  addCartAlert: 'Successful added',
+  loginSuccess: 'Login successful',
+  error: 'Something wrong?',
+  productDetail: 'Detail',
 };

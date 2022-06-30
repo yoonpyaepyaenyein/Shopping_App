@@ -28,11 +28,12 @@ const Login = ({navigation}) => {
           getAuth(true);
           getUserInfo(formatData);
           appStorage.setItem('@user.token', token);
+          ToastAndroid.show(local.loginSuccess, ToastAndroid.SHORT);
         } else {
-          ToastAndroid.show('Something wrong!', ToastAndroid.SHORT);
+          ToastAndroid.show(local.error, ToastAndroid.SHORT);
         }
       } else {
-        ToastAndroid.show('Something wrong!', ToastAndroid.SHORT);
+        ToastAndroid.show(local.error, ToastAndroid.SHORT);
       }
     } catch (error) {
       console.log('error', error);

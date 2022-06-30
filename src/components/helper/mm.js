@@ -8,4 +8,13 @@ export default {
   google: 'ဂူဂဲလ်',
   forgetPwd: 'မေ့နေသလား?',
   language: 'ဘာသာစကား',
+  price: 'စျေးနှုန်း',
+  buy: 'ဝယ်မည်',
+  logout: 'ထွက်ရန်',
+  logoutAlert: 'အကောင့် ထွက်ပြီးပါပြီး',
+  addCart: 'စျေးဝယ်ခြင်း',
+  addCartAlert: 'ထည့်သွင််းခြင်း အောင်မြင်ပါသည်',
+  loginSuccess: 'အကောင့်ဝင်ရောက်ခြင်း အောင်မြင်ပါသည်',
+  error: 'တခုခု မှားယွင်းနေပါသည်',
+  productDetail: 'အသေးစိတ်',
 };

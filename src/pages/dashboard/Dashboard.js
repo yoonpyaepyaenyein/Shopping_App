@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, ToastAndroid} from 'react-native';
 
 // Components
 import {AuthContext} from '../../context/context';
@@ -9,28 +9,39 @@ import Product from '@components/dashboard/product/product';
 
 // Components
 import ProductData from '../../data/product';
+import {useLocal} from '../../hook';
 
 // Styles & Icons
 import styles from './Style';
 import Logout from '@assets/icons/logout';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
   const [name, setName] = useState('');
   const {auth, getAuth, userInfo} = useContext(AuthContext);
+  const local = useLocal();
 
-  const removeData = ({navigation}) => {
-    try {
-      appStorage.removeItem('@user.token');
-      getAuth(false);
-    } catch (e) {
-      console.log('error', e);
-    }
+  const productHandler = value => {
+    navigation.navigate('ProductDetails', {data: value});
+  };
+
+  const logoutHandler = () => {
+    appStorage.removeItem('@user.token');
+    getAuth(false);
+    ToastAndroid.show(local.logoutAlert, ToastAndroid.SHORT);
   };
 
   return (
     <View style={styles.container}>
-      <UserHeader data={userInfo} />
-      <Product data={ProductData} />
+      <UserHeader
+        data={userInfo}
+        buttonTitle={local.logout}
+        logoutAction={logoutHandler}
+      />
+      <Product
+        data={ProductData}
+        productAction={productHandler}
+        price={local.price}
+      />
     </View>
   );
 };

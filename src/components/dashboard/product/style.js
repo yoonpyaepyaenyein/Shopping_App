@@ -29,13 +29,29 @@ const styles = StyleSheet.create({
     shadowOpacity: hp(0.5),
     elevation: 3,
     marginBottom: hp(2),
+    overflow: 'hidden',
   },
   productTitle: {
-    fontSize: hp(3),
+    fontSize: hp(2),
   },
   productPrice: {
-    fontSize: hp(2),
-    marginTop: hp(1),
+    fontSize: hp(1.6),
+  },
+  imageContainer: {
+    width: '100%',
+    height: hp(10),
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
+  titleContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // backgroundColor: 'red',
   },
 });
 
