@@ -6,7 +6,7 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#ff8800',
     width: wp(100),
     marginTop: hp(5),
     paddingHorizontal: hp(1.5),
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     shadowColor: 'blue',
     shadowOpacity: hp(0.5),
     elevation: 3,
-    marginBottom: hp(2),
+    marginHorizontal: wp(1.5),
+    marginVertical: hp(0.8),
     overflow: 'hidden',
   },
   productTitle: {

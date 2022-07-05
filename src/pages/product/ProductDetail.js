@@ -1,14 +1,39 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity, ToastAndroid} from 'react-native';
+import CryptoJS from 'crypto-js';
+import Config from 'react-native-config';
 
 // Components
 import {useLocal} from '../../hook';
+import {encryptData, decryptData, fetchGet, fetchPost} from '../../utils';
+import apiUrl from '../../utils/apiUrl';
+
 // Styles
 import styles from './Style';
 
 const ProductDetail = ({route}) => {
   const {data} = route.params;
   const local = useLocal();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    let data = {
+      email: 'htoo@gmail.com',
+      password: 'admin123$',
+    };
+    const encData = encryptData(data);
+    
+    const response = await fetchPost(apiUrl.users, {data: encData});
+
+    console.log('response users :::', response);
+
+    const decData = decryptData(response);
+
+    console.log('dec data :::',decData);
+  };
 
   const addToCartHandler = value => {
     console.log('add to cart ::', value);
