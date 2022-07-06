@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
 
 // Comonents
 import AuthStack from './stack/AuthStack';
 import DashboardStack from './stack/DashboardStack';
 import {AuthContext} from '../context/context';
 import {appStorage} from '../utils';
+import store from '../store';
 
 const appNavigator = () => {
   const [auth, setAuth] = useState(false);
@@ -65,19 +67,23 @@ const appNavigator = () => {
     );
   } else if (auth) {
     return (
-      <AuthContext.Provider value={context}>
-        <NavigationContainer>
-          <DashboardStack />
-        </NavigationContainer>
-      </AuthContext.Provider>
+      <Provider store={store}>
+        <AuthContext.Provider value={context}>
+          <NavigationContainer>
+            <DashboardStack />
+          </NavigationContainer>
+        </AuthContext.Provider>
+      </Provider>
     );
   } else {
     return (
-      <AuthContext.Provider value={context}>
-        <NavigationContainer>
-          <AuthStack />
-        </NavigationContainer>
-      </AuthContext.Provider>
+      <Provider store={store}>
+        <AuthContext.Provider value={context}>
+          <NavigationContainer>
+            <AuthStack />
+          </NavigationContainer>
+        </AuthContext.Provider>
+      </Provider>
     );
   }
 };

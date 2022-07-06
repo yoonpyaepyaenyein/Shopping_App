@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontSize: hp(3),
+    fontFamily: 'GentiumBookPlus-Regular',
   },
   productPrice: {
     fontSize: hp(2),
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: hp(1),
     elevation: 3,
-    borderRadius:hp(5)
+    borderRadius: hp(5),
   },
   buyTitle: {
     color: '#fff',

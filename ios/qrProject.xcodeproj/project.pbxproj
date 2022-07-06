@@ -14,6 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-qrProject-qrProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-qrProject-qrProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		259C3F31948E42918ED3C950 /* GentiumBookPlus-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72211B6F64D44E6EADD25513 /* GentiumBookPlus-Bold.ttf */; };
+		73A8A3AFB9EA43C5B8CE8234 /* GentiumBookPlus-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D508EB6DDE641C686F00798 /* GentiumBookPlus-Italic.ttf */; };
+		5BEDE6205AE146F3A9BE07B9 /* GentiumBookPlus-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB1208F74F4CC1B1637C77 /* GentiumBookPlus-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = qrProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-qrProject-qrProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrProject-qrProjectTests.release.xcconfig"; path = "Target Support Files/Pods-qrProject-qrProjectTests/Pods-qrProject-qrProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		72211B6F64D44E6EADD25513 /* GentiumBookPlus-Bold.ttf */ = {isa = PBXFileReference; name = "GentiumBookPlus-Bold.ttf"; path = "../assets/fonts/GentiumBookPlus-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8D508EB6DDE641C686F00798 /* GentiumBookPlus-Italic.ttf */ = {isa = PBXFileReference; name = "GentiumBookPlus-Italic.ttf"; path = "../assets/fonts/GentiumBookPlus-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5DEB1208F74F4CC1B1637C77 /* GentiumBookPlus-Regular.ttf */ = {isa = PBXFileReference; name = "GentiumBookPlus-Regular.ttf"; path = "../assets/fonts/GentiumBookPlus-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				25237E3C663A4F899DE3A47A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +154,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		25237E3C663A4F899DE3A47A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				72211B6F64D44E6EADD25513 /* GentiumBookPlus-Bold.ttf */,
+				8D508EB6DDE641C686F00798 /* GentiumBookPlus-Italic.ttf */,
+				5DEB1208F74F4CC1B1637C77 /* GentiumBookPlus-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +262,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				259C3F31948E42918ED3C950 /* GentiumBookPlus-Bold.ttf in Resources */,
+				73A8A3AFB9EA43C5B8CE8234 /* GentiumBookPlus-Italic.ttf in Resources */,
+				5BEDE6205AE146F3A9BE07B9 /* GentiumBookPlus-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

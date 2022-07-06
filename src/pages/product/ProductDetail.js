@@ -1,11 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, TouchableOpacity, ToastAndroid} from 'react-native';
-import CryptoJS from 'crypto-js';
-import Config from 'react-native-config';
+import FormData from 'form-data';
+import {useSelector} from 'react-redux';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 // Components
 import {useLocal} from '../../hook';
-import {encryptData, decryptData, fetchGet, fetchPost} from '../../utils';
+import {
+  encryptData,
+  decryptData,
+  fetchGet,
+  fetchPost,
+  fetchMultiUpload,
+  fetchPostMulti,
+} from '../../utils';
 import apiUrl from '../../utils/apiUrl';
 
 // Styles
@@ -15,24 +23,40 @@ const ProductDetail = ({route}) => {
   const {data} = route.params;
   const local = useLocal();
 
+  const products = useSelector(state => state.productsList.products);
+
+  const [photo, setPhoto] = useState();
+
   useEffect(() => {
-    fetchData();
+    // fetchData();
+
+    console.log('product :::', products);
   }, []);
 
+  const uploadImage = async () => {
+    await launchImageLibrary().then(res => {
+      setPhoto(res.assets);
+    });
+  };
+
   const fetchData = async () => {
+    const uploadData = new FormData();
     let data = {
       email: 'htoo@gmail.com',
       password: 'admin123$',
     };
-    const encData = encryptData(data);
-    
-    const response = await fetchPost(apiUrl.users, {data: encData});
+    uploadData.append('data', data);
+    for (const key in photo) {
+      uploadData.append('photos[]', {
+        type: photo[key].type,
+        uri: photo[key].uri,
+        name: photo[key].fileName,
+        width: photo[key].width,
+        height: photo[key].height,
+      });
+    }
 
-    console.log('response users :::', response);
-
-    const decData = decryptData(response);
-
-    console.log('dec data :::',decData);
+    const response = await fetchPostMulti(apiUrl.photo, {uploadData});
   };
 
   const addToCartHandler = value => {
@@ -59,6 +83,16 @@ const ProductDetail = ({route}) => {
           onPress={() => addToCartHandler(data)}>
           <Text style={styles.buyTitle}>{local.addCart}</Text>
         </TouchableOpacity>
+
+        {/* Upload Image */}
+        {/* <TouchableOpacity onPress={uploadImage}>
+          <Text>Upload Images</Text>
+        </TouchableOpacity> */}
+
+        {/* Upload Image */}
+        {/* <TouchableOpacity onPress={fetchData}>
+          <Text>Submit</Text>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
