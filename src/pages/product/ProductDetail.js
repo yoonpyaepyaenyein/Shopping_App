@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, TouchableOpacity, ToastAndroid} from 'react-native';
 import FormData from 'form-data';
-import {useSelector} from 'react-redux';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {useDispatch} from 'react-redux';
 
 // Components
 import {useLocal} from '../../hook';
@@ -15,6 +15,7 @@ import {
   fetchPostMulti,
 } from '../../utils';
 import apiUrl from '../../utils/apiUrl';
+import * as actionProducts from '../../store/action/products';
 
 // Styles
 import styles from './Style';
@@ -23,14 +24,11 @@ const ProductDetail = ({route}) => {
   const {data} = route.params;
   const local = useLocal();
 
-  const products = useSelector(state => state.productsList.products);
-
   const [photo, setPhoto] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // fetchData();
-
-    console.log('product :::', products);
   }, []);
 
   const uploadImage = async () => {
@@ -60,7 +58,7 @@ const ProductDetail = ({route}) => {
   };
 
   const addToCartHandler = value => {
-    console.log('add to cart ::', value);
+    dispatch(actionProducts.orderProducts(value));
     ToastAndroid.show(local.addCartAlert, ToastAndroid.SHORT);
   };
   return (

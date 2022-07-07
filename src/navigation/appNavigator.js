@@ -3,9 +3,11 @@ import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 
+// TabStack
+import TabNavigator from './tabs/TabNavigator';
+
 // Comonents
 import AuthStack from './stack/AuthStack';
-import DashboardStack from './stack/DashboardStack';
 import {AuthContext} from '../context/context';
 import {appStorage} from '../utils';
 import store from '../store';
@@ -69,9 +71,7 @@ const appNavigator = () => {
     return (
       <Provider store={store}>
         <AuthContext.Provider value={context}>
-          <NavigationContainer>
-            <DashboardStack />
-          </NavigationContainer>
+          <TabNavigator />
         </AuthContext.Provider>
       </Provider>
     );

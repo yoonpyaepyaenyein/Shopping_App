@@ -13,7 +13,7 @@ import {useLocal} from '../../hook';
 
 const Stack = createNativeStackNavigator();
 
-const authStack = () => {
+const DashboardStack = () => {
   const local = useLocal();
   return (
     <Stack.Navigator>
@@ -36,4 +36,4 @@ const authStack = () => {
   );
 };
 
-export default authStack;
+export default DashboardStack;

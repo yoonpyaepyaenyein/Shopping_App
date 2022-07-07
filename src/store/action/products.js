@@ -1,14 +1,15 @@
-import {PRODUCTS, NOPRODUCTS} from '../type';
+import {ADD_PRODUCTS, ORDERS} from '../type';
 
 export const addProducts = data => {
   return {
-    type: PRODUCTS,
+    type: ADD_PRODUCTS,
     products: data,
   };
 };
 
-export const noProducts = () => {
+export const orderProducts = data => {
   return {
-    type: NOPRODUCTS,
+    type: ORDERS,
+    orders: data,
   };
 };

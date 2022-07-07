@@ -1,2 +1,2 @@
-export const PRODUCTS = 'PRODUCTS'
-export const NOPRODUCTS = 'NOPRODUCTS'
+export const ADD_PRODUCTS = 'ADD_PRODUCTS'
+export const ORDERS = 'ORDERS'
