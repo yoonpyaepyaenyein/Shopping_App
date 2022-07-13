@@ -68,6 +68,14 @@ const styles = StyleSheet.create({
     fontSize: hp(2.5),
     fontFamily: 'GentiumBookPlus-Regular',
   },
+  quantity: {
+    color: '#fff',
+    fontSize: hp(1.6),
+    borderRadius: hp(10),
+    paddingHorizontal: hp(0.8),
+    backgroundColor: '#ff8800',
+    marginLeft: hp(0.5),
+  },
 });
 
 export default styles;

@@ -12,7 +12,7 @@ import styles from './style';
 import Cart from '@assets/icons/cart';
 
 const OrderContent = props => {
-  console.log('order ::::',props.data)
+  console.log('order ::::', props.data);
   return (
     <>
       {props.data ? (
@@ -21,7 +21,14 @@ const OrderContent = props => {
             <View style={styles.leftContianer}>
               <Image source={item.image} style={styles.image} />
               <View style={styles.productInfo}>
-                <Text style={styles.name}>{item.name}</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.quantity}>{item.quantity}</Text>
+                </View>
                 <Text style={styles.price}>
                   {props.priceText} : {item.price} {item.currency}
                 </Text>
@@ -31,7 +38,7 @@ const OrderContent = props => {
               <TouchableOpacity
                 style={styles.deletBtn}
                 activeOpacity={0.8}
-                onPress={props.delete}>
+                onPress={()=>props.delete(item)}>
                 <Text style={styles.delete}>Delete</Text>
               </TouchableOpacity>
             </View>

@@ -15,7 +15,9 @@ import {
   fetchPostMulti,
 } from '../../utils';
 import apiUrl from '../../utils/apiUrl';
+
 import * as actionProducts from '../../store/action/products';
+import * as actionCart from '../../store/action/cart';
 
 // Styles
 import styles from './Style';
@@ -58,7 +60,7 @@ const ProductDetail = ({route}) => {
   };
 
   const addToCartHandler = value => {
-    dispatch(actionProducts.orderProducts(value));
+    dispatch(actionCart.addToCart(value));
     ToastAndroid.show(local.addCartAlert, ToastAndroid.SHORT);
   };
   return (

@@ -1,6 +1,7 @@
 export default product = [
   {
     id: 1,
+    quantity: 1,
     name: 'Orange',
     currency: 'Ks',
     price: 300,
@@ -8,6 +9,7 @@ export default product = [
   },
   {
     id: 2,
+    quantity: 1,
     name: 'Apple',
     currency: 'Ks',
     price: 1000,
@@ -15,6 +17,7 @@ export default product = [
   },
   {
     id: 3,
+    quantity: 1,
     name: 'Banana',
     currency: 'Ks',
     price: 200,
@@ -22,6 +25,7 @@ export default product = [
   },
   {
     id: 4,
+    quantity: 1,
     name: 'Mango',
     currency: 'Ks',
     price: 150,
