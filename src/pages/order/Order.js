@@ -10,6 +10,7 @@ import styles from './Style';
 
 // Action
 import * as actionCart from '../../store/action/cart';
+import * as actionOrder from '../../store/action/order';
 
 const Order = () => {
   const local = useLocal();
@@ -31,21 +32,31 @@ const Order = () => {
     return updateCartList;
   });
 
-  useEffect(() => {
-    console.log('order list --------', cartList);
-  }, []);
-
   const deleteHandler = data => {
-    console.log('delet item ');
     dispatch(actionCart.removeCart(data));
   };
+
+  const orderHandler = () => {
+    dispatch(actionOrder.addOrder(cartList));
+  };
+
   return (
     <View style={styles.container}>
-      <OrderContent
-        data={cartList}
-        priceText={local.price}
-        delete={deleteHandler}
-      />
+      <View>
+        <OrderContent
+          data={cartList}
+          priceText={local.price}
+          delete={deleteHandler}
+        />
+      </View>
+
+      {cartList.length > 0 && (
+        <View style={styles.cartFooter}>
+          <TouchableOpacity style={styles.btnFooter} onPress={orderHandler}>
+            <Text style={{fontSize: 13, color: '#fff'}}>Order Now</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

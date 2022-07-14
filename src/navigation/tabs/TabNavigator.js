@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -50,7 +50,7 @@ const TabNavigator = () => {
           component={OrderStack}
           options={{
             headerShown: false,
-            title: 'Order',
+            title: 'Cart',
             tabBarIcon: ({focused, color, size}) => (
               <CartIcon
                 colors={focused ? '#A0DE83' : '#000'}

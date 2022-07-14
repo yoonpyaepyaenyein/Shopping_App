@@ -28,6 +28,9 @@ const product = props => {
             {props.price} {item.price} {item.currency}
           </Text>
         </View>
+        <TouchableOpacity onPress={() => props.deleteAction(item)}>
+          <Text>Delete</Text>
+        </TouchableOpacity>
       </TouchableOpacity>
     );
   };

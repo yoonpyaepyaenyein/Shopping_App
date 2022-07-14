@@ -27,9 +27,14 @@ const userHeader = props => {
           <Text style={styles.email}>{props.data.email}</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={props.logoutAction}>
-        <Text style={styles.logoutTitle}>{props.buttonTitle}</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity style={styles.button} onPress={props.logoutAction}>
+          <Text style={styles.logoutTitle}>{props.buttonTitle}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={props.createAction}>
+          <Text style={styles.logoutTitle}>Add product</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

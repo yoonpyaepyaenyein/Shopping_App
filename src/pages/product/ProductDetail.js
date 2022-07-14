@@ -63,6 +63,20 @@ const ProductDetail = ({route}) => {
     dispatch(actionCart.addToCart(value));
     ToastAndroid.show(local.addCartAlert, ToastAndroid.SHORT);
   };
+
+  const updateHandler = () => {
+    // console.log('--->', value);
+    let updateData = {
+      id: data.id,
+      quantity: data.quantity,
+      name: 'add new',
+      currency: data.currency,
+      price: 50,
+      image: data.image,
+    };
+    dispatch(actionProducts.updateProducts(updateData));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -78,11 +92,19 @@ const ProductDetail = ({route}) => {
         </View>
 
         {/* Buy Item */}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => addToCartHandler(data)}>
-          <Text style={styles.buyTitle}>{local.addCart}</Text>
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => addToCartHandler(data)}>
+            <Text style={styles.buyTitle}>{local.addCart}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.button, {alignItems: 'center'}]}
+            onPress={updateHandler}>
+            <Text style={styles.buyTitle}>Update</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Upload Image */}
         {/* <TouchableOpacity onPress={uploadImage}>

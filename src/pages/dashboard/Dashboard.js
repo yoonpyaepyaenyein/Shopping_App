@@ -38,17 +38,36 @@ const Dashboard = ({navigation}) => {
     ToastAndroid.show(local.logoutAlert, ToastAndroid.SHORT);
   };
 
+  const createHandler = () => {
+    let data = {
+      id: 1,
+      quantity: 1,
+      name: 'add new',
+      currency: 'Ks',
+      price: 50,
+      image: require('../../../assets/images/apple.png'),
+    };
+
+    dispatch(actionProducts.addProducts(data));
+  };
+
+  const deleteHandler = value => {
+    dispatch(actionProducts.deleteProduct(value.id));
+  };
+
   return (
     <View style={styles.container}>
       <UserHeader
         data={userInfo}
         buttonTitle={local.logout}
         logoutAction={logoutHandler}
+        createAction={createHandler}
       />
       <Product
         data={products}
         productAction={productHandler}
         price={local.price}
+        deleteAction={deleteHandler}
       />
     </View>
   );

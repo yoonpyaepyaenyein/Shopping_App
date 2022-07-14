@@ -12,10 +12,9 @@ import styles from './style';
 import Cart from '@assets/icons/cart';
 
 const OrderContent = props => {
-  console.log('order ::::', props.data);
   return (
     <>
-      {props.data ? (
+      {props.data.length > 0 ? (
         props.data.map(item => (
           <View style={styles.container} key={item.id}>
             <View style={styles.leftContianer}>
@@ -27,7 +26,9 @@ const OrderContent = props => {
                     alignItems: 'center',
                   }}>
                   <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.quantity}>{item.quantity}</Text>
+                  {item.quantity > 1 && (
+                    <Text style={styles.quantity}>{item.quantity}</Text>
+                  )}
                 </View>
                 <Text style={styles.price}>
                   {props.priceText} : {item.price} {item.currency}
@@ -38,8 +39,8 @@ const OrderContent = props => {
               <TouchableOpacity
                 style={styles.deletBtn}
                 activeOpacity={0.8}
-                onPress={()=>props.delete(item)}>
-                <Text style={styles.delete}>Delete</Text>
+                onPress={() => props.delete(item)}>
+                <Text style={styles.delete}>Remove</Text>
               </TouchableOpacity>
             </View>
           </View>

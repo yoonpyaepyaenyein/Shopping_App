@@ -9,6 +9,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
+    justifyContent: 'space-between',
+  },
+  cartFooter: {
+    width: wp(100),
+    paddingVertical: hp(3),
+    paddingRight: hp(2),
+    alignItems: 'flex-end',
+  },
+  btnFooter: {
+    backgroundColor: 'green',
+    paddingHorizontal: hp(2),
+    paddingVertical: hp(0.5),
+    
   },
 });
 

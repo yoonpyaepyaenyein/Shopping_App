@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     shadowRadius: hp(1),
     elevation: 3,
     borderRadius: hp(5),
+    marginTop: hp(0.8),
   },
   buyTitle: {
     color: '#fff',
