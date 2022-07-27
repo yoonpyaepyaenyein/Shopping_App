@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626432636640",
+    "project_id": "react-native-training-db71a",
+    "storage_bucket": "react-native-training-db71a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626432636640:android:1bd1ca7f3cd33544a50285",
+        "android_client_info": {
+          "package_name": "com.ninecomplex.training"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626432636640-i5qhao6ltoodtak13mrancgmnjcdj8ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb8xht2I0lhhH1_B8hJo5Do6FZOObDi5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626432636640-i5qhao6ltoodtak13mrancgmnjcdj8ek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

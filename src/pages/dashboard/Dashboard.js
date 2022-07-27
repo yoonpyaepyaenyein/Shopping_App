@@ -57,12 +57,12 @@ const Dashboard = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <UserHeader
+      {/* <UserHeader
         data={userInfo}
         buttonTitle={local.logout}
         logoutAction={logoutHandler}
         createAction={createHandler}
-      />
+      /> */}
       <Product
         data={products}
         productAction={productHandler}

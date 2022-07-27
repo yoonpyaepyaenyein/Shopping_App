@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
+import messaging from '@react-native-firebase/messaging';
 
 // TabStack
 import TabNavigator from './tabs/TabNavigator';
@@ -17,15 +19,39 @@ const appNavigator = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [splash, setSplash] = useState(true);
   const [lang, setLang] = useState('en');
+  const [deviceToken, setDeviceToken] = useState(null);
+
+  // Handle user state changes
+  // const onAuthStateChanged = user => {
+  //   setUser(user);
+  //   if (initializing) setInitializing(false);
+  // };
+
+  // if (initializing) return null;
 
   useEffect(() => {
+    // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     getData();
+    SplashScreen.hide();
+    getToken();
+    // return subscriber; // unsubscribe on unmount
   }, []);
+
+  const getToken = async () => {
+    const fcmToken = await messaging().getToken();
+    if (fcmToken) {
+      appStorage.setItem('@device.token', fcmToken);
+      setDeviceToken(fcmToken);
+    } else {
+      console.log('token error');
+    }
+  };
 
   const context = {
     auth,
     lang,
     userInfo,
+    deviceToken,
     getAuth: value => {
       setAuth(value);
     },
@@ -39,13 +65,13 @@ const appNavigator = () => {
 
   const getData = () => {
     try {
-      const data = appStorage.getItem('@user.token');
+      const data = appStorage.getItem('@device.token');
       const userData = appStorage.getItem('@user.data');
       const storeLang = appStorage.getItem('@language');
       setLang(storeLang);
       if (data) {
         setAuth(true);
-        setUserInfo(JSON.parse(userData));
+        setUserInfo(userData ? JSON.parse(userData) : '');
         setTimeout(() => {
           setSplash(false);
         }, 2000);

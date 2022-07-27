@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.qrproject",
+    package = "com.ninecomplex.training",
 )
 
 android_resource(
     name = "res",
-    package = "com.qrproject",
+    package = "com.ninecomplex.training",
     res = "src/main/res",
 )
 

@@ -23,8 +23,8 @@ const userHeader = props => {
           />
         </View>
         <View style={styles.userInfo}>
-          <Text style={styles.name}>{props.data.name}</Text>
-          <Text style={styles.email}>{props.data.email}</Text>
+          <Text style={styles.name}>{props.data ? props.data.name : ''}</Text>
+          <Text style={styles.email}>{props.data ? props.data.email : ''}</Text>
         </View>
       </View>
       <View>

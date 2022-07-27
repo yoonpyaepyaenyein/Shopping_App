@@ -1,5 +1,8 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -136,13 +139,13 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.qrproject"
+        applicationId "com.ninecomplex.training"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
-        resValue "string", "build_config_package", "com.qrproject"
+        resValue "string", "build_config_package", "com.ninecomplex.training"
 
         if (isNewArchitectureEnabled()) {
             // We configure the NDK build only if you decide to opt-in for the New Architecture.
@@ -268,6 +271,13 @@ dependencies {
 
     // react-native-config
     implementation project(':react-native-config')
+
+    // Splash screen
+    implementation project(':react-native-splash-screen')
+
+    // firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-analytics'
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

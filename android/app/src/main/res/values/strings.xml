@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">qrProject</string>
+    <string name="app_name">Training</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">UjzfN3C80XmDi9mF2WzQQDRM9udPELRgdeu6S</string>
 </resources>
